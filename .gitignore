@@ -1,0 +1,10 @@
+.DS_Store
+
+# VS Code
+.vscode
+
+__pycache__
+
+# Build executables and resources
+build/
+cmf-docker-metrics.spec

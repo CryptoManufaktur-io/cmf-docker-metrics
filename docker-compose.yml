@@ -1,0 +1,25 @@
+version: '3.9'
+
+x-logging: &logging
+  logging:
+    driver: json-file
+    options:
+      max-size: 20m
+      max-file: "3"
+      tag: '{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}'
+
+services:
+  cmf_docker_metrics:
+    platform: "linux/amd64"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cmf-docker-metrics:local
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - metrics.scrape=true
+      - metrics.path=/metrics
+      - metrics.port=9090
+    <<: *logging

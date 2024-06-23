@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "cmf-docker-metrics"
+version = "0.1.0"
+description = ""
+authors = ["concentricspheres <107502292+concentricspheres@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.12"
+docker = "^7.1.0"
+prometheus-client = "^0.20.0"
+flask = "^3.0.3"
+waitress = "^3.0.0"
+pyinstaller = "^5.10.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
