@@ -13,3 +13,5 @@ Port: `9090`
 - container_restart_count
 - container_status
 - container_oom_killed
+- service_running_replicas
+- service_desired_replicas
