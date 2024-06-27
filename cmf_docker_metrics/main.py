@@ -32,7 +32,7 @@ SERVICE_RUNNING_REPLICAS = Gauge('service_running_replicas', 'Number of replicas
 SERVICE_DESIRED_REPLICAS = Gauge('service_desired_replicas', 'Number of replicas that should be running', ['service_name', 'stack', 'swarm_nodes'])
 
 def make_metrics():
-    def update_metrics():
+    while True:
         LOGGER.info("Updating docker metrics...")
         # Get containers metrics.
         containers = cli.containers.list()
@@ -98,9 +98,6 @@ def make_metrics():
         LOGGER.info("Done.")
 
         time.sleep(5)
-        update_metrics()
-
-    update_metrics()
 
 if __name__ == '__main__':
     t1 = threading.Thread(target=make_metrics)
