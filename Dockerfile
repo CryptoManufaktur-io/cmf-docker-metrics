@@ -1,4 +1,4 @@
-FROM python:3.9-bullseye as builder
+FROM python:3.11-bookworm as builder
 
 RUN python --version
 
@@ -14,7 +14,7 @@ RUN poetry install
 
 RUN ./build.sh
 
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 RUN apt-get update && apt-get install -y ca-certificates bash tzdata hwloc libhwloc-dev wget curl
 
